@@ -20,8 +20,7 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reviewId;
     
-    @NotBlank(message = "Reviewer is required")
-    private Long reviewerId;
+    private String reviewerId;
 
     @Min(value = 1, message = "Review rating must be between 1 and 5")
     @Max(value = 5, message = "Review rating must be between 1 and 5")

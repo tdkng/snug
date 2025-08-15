@@ -9,5 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ReviewDTO {
     private Long reviewId;
-    private String reviewPerson;
+    private String reviewerId;
+    private int reviewRating;
+    private String reviewComments;
 }

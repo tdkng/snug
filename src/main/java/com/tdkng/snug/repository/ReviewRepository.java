@@ -5,5 +5,5 @@ import jakarta.validation.constraints.NotNull;
 import com.tdkng.snug.model.Review;
 
 public interface ReviewRepository extends JpaRepository<Review, Long> {
-    Review findByReviewerId(@NotNull Long reviewerId);
+    Review findByReviewerId(@NotNull String reviewerId);
 }
