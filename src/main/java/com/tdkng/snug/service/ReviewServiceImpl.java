@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.tdkng.snug.exceptions.APIException;
 import com.tdkng.snug.exceptions.ResourceNotFoundException;
+import com.tdkng.snug.model.AppUser;
 import com.tdkng.snug.model.Review;
 import com.tdkng.snug.payload.ReviewDTO;
 import com.tdkng.snug.payload.ReviewResponse;
@@ -55,9 +56,9 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public ReviewDTO createReview(ReviewDTO reviewDTO) {
         Review review = modelMapper.map(reviewDTO, Review.class);
-        Review reviewDb = reviewRepository.findByReviewerId(review.getReviewerId());
+        Review reviewDb = reviewRepository.findByAppUser(review.getAppUser());
         if (reviewDb != null)
-            throw new APIException("Review by reviewer " + review.getReviewerId() + " already exists.");
+            throw new APIException("Review by reviewer " + review.getAppUser().getId() + " already exists.");
         Review savedReview = reviewRepository.save(review);
         return modelMapper.map(savedReview, ReviewDTO.class);
     }
@@ -73,7 +74,7 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public ReviewDTO updateReview(ReviewDTO reviewDTO, Long id) {
         Review review = modelMapper.map(reviewDTO, Review.class);
-        review.setReviewId(id);
+        review.setId(id);
         Review savedReview = reviewRepository.save(review);
         return modelMapper.map(savedReview, ReviewDTO.class);
     }

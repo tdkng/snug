@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReviewDTO {
-    private Long reviewId;
-    private String reviewerId;
+    private Long id;
+    private String userId;
     private int reviewRating;
     private String reviewComments;
 }
