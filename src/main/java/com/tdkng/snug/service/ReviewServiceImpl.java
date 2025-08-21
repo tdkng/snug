@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.tdkng.snug.exceptions.APIException;
 import com.tdkng.snug.exceptions.ResourceNotFoundException;
-import com.tdkng.snug.model.AppUser;
 import com.tdkng.snug.model.Review;
 import com.tdkng.snug.payload.ReviewDTO;
 import com.tdkng.snug.payload.ReviewResponse;
