@@ -2,6 +2,8 @@ package com.tdkng.snug.model;
 
 import org.springframework.boot.autoconfigure.condition.AllNestedConditions;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,6 +28,7 @@ public class Review {
     
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private AppUser appUser;
 
     @Min(value = 1, message = "Review rating must be between 1 and 5")

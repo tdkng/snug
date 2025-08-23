@@ -1,5 +1,7 @@
 package com.tdkng.snug.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,5 +23,6 @@ public class Profile {
 
     @OneToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private AppUser appUser;
 }

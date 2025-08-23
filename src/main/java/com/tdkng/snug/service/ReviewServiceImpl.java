@@ -65,7 +65,7 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public ReviewDTO deleteReview(Long id) {
         Review review = reviewRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("Review", "reviewId", id));
+            .orElseThrow(() -> new ResourceNotFoundException("Review", "id", id));
         reviewRepository.delete(review);
         return modelMapper.map(review, ReviewDTO.class);
     }
