@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tdkng.snug.exceptions.APIException;
 import com.tdkng.snug.exceptions.ResourceNotFoundException;
 import com.tdkng.snug.model.AppUser;
 import com.tdkng.snug.repository.AppUserRepository;
@@ -20,10 +19,6 @@ public class UserServiceImpl implements UserService {
     }
 
     public AppUser saveUser(AppUser user) {
-        AppUser userDb = appUserRepository.findById(user.getId()).orElse(null);
-        if (userDb != null) {
-            throw new APIException("User with id " + userDb.getId() + " already exists.");
-        }
         AppUser savedUser = appUserRepository.save(user);
         return savedUser;
     }

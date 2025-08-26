@@ -22,7 +22,14 @@ public class Profile {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "app_user")
     @JsonIgnore
     private AppUser appUser;
+
+    private String description;
+
+    public void setAppUser(AppUser appUser) {
+        appUser.setProfile(this);
+        this.appUser = appUser;
+    }
 }

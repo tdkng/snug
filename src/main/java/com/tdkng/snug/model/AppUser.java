@@ -1,11 +1,10 @@
 package com.tdkng.snug.model;
 
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import java.util.Objects;
 import java.util.ArrayList;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,11 +24,18 @@ public class AppUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(mappedBy = "appUser")
-    @JsonIgnore
+    @OneToOne(mappedBy = "appUser", cascade = CascadeType.ALL)
     private Profile profile;
 
     @OneToMany(mappedBy = "appUser")
-    @JsonIgnore
     private List<Review> reviews = new ArrayList<>();
+
+    public void setProfile(Profile profile) {
+        profile.setAppUser(this);
+        this.profile = profile;
+    }
+
+    public int hashCode() {
+        return Objects.hash(new Object[]{this.id});
+    }
 }

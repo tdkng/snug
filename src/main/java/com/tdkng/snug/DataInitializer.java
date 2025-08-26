@@ -26,18 +26,16 @@ public class DataInitializer {
 	public CommandLineRunner initialize() {
 		return (args -> {
 			AppUser user1 = new AppUser();
+            appUserRepository.save(user1);
 
             Profile profile1 = new Profile();
             profile1.setAppUser(user1);
+            profileRepository.save(profile1);
 
 			Review review1 = new Review();
 			review1.setReviewRating(4);
 			review1.setReviewComments("place is very pretty!");
 			review1.setAppUser(user1);
-            // user1.getReviews().add(review1);
-
-            appUserRepository.save(user1);
-            profileRepository.save(profile1);
             reviewRepository.save(review1);
 		});
 	}
