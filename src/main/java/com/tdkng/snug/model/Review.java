@@ -1,7 +1,5 @@
 package com.tdkng.snug.model;
 
-import org.springframework.boot.autoconfigure.condition.AllNestedConditions;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;

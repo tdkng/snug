@@ -29,7 +29,9 @@ public class Profile {
     private String description;
 
     public void setAppUser(AppUser appUser) {
-        appUser.setProfile(this);
         this.appUser = appUser;
+        if (appUser.getProfile() != this) {
+            appUser.setProfile(this);
+        }
     }
 }

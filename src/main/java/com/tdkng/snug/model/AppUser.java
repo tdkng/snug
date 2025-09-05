@@ -31,8 +31,8 @@ public class AppUser {
     private List<Review> reviews = new ArrayList<>();
 
     public void setProfile(Profile profile) {
-        profile.setAppUser(this);
         this.profile = profile;
+        profile.setAppUser(this);
     }
 
     public int hashCode() {

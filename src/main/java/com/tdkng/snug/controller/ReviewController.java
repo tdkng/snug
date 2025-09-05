@@ -1,6 +1,5 @@
 package com.tdkng.snug.controller;
 
-import com.tdkng.snug.model.Review;
 import com.tdkng.snug.payload.ReviewDTO;
 import com.tdkng.snug.payload.ReviewResponse;
 import com.tdkng.snug.service.ReviewService;
