@@ -7,24 +7,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import io.github.cdimascio.dotenv.Dotenv;
+import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 public class AppConfig {
-    
-    static {
-        // Load .env file
-        Dotenv dotenv = Dotenv.configure()
-            .directory("./")
-            .ignoreIfMalformed()
-            .ignoreIfMissing()
-            .load();
-        
-        // Set system properties for Spring to pick up
-        dotenv.entries().forEach(entry -> {
-            System.setProperty(entry.getKey(), entry.getValue());
-        });
-    }
     @Bean
     public ModelMapper modelMapper() {
         return new ModelMapper();
