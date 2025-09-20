@@ -18,11 +18,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api/public")
 public class ReviewController {
     @Autowired
     private ReviewService reviewService;
 
-    @GetMapping("api/public/reviews")
+    @GetMapping("/reviews")
     public ResponseEntity<ReviewResponse> getAllReviews(
         @RequestParam(name = "pageNumber") Integer pageNumber,
         @RequestParam(name = "pageSize") Integer pageSize,
@@ -31,18 +32,18 @@ public class ReviewController {
         return new ResponseEntity<>(reviewService.getAllReviews(pageNumber, pageSize, sortBy, sortOrder), HttpStatus.OK);
     }
 
-    @PostMapping("api/public/reviews")
+    @PostMapping("/reviews")
     public ResponseEntity<ReviewDTO> createReview(@Valid @RequestBody ReviewDTO reviewDTO) {
         return new ResponseEntity<>(reviewService.createReview(reviewDTO), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("api/public/reviews/{id}")
+    @DeleteMapping("/reviews/{id}")
     public ResponseEntity<ReviewDTO> deleteReview(@PathVariable Long id) {
         ReviewDTO deleted = reviewService.deleteReview(id);
         return new ResponseEntity<>(deleted, HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping("api/public/reviews/{id}")
+    @PutMapping("/reviews/{id}")
     public ResponseEntity<ReviewDTO> updateReview(@Valid @RequestBody ReviewDTO reviewDTO, @PathVariable Long id) {
         ReviewDTO savedReviewDTO = reviewService.updateReview(reviewDTO, id);
         return new ResponseEntity<>(savedReviewDTO, HttpStatus.OK);

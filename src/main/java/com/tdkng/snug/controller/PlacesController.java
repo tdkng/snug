@@ -3,16 +3,14 @@ package com.tdkng.snug.controller;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.tdkng.snug.service.PlacesService;
 
 import reactor.core.publisher.Mono;
 
 @RestController
+@RequestMapping("/api/public")
 public class PlacesController {
     @Autowired
     private final PlacesService placesService;
@@ -21,7 +19,7 @@ public class PlacesController {
       this.placesService = placesService;
     }
   
-    @GetMapping("api/public/places/nearby")
+    @GetMapping("/places/nearby")
     public Mono<Map<String, Object>> nearby(
         @RequestParam double lat,
         @RequestParam double lon,
@@ -30,7 +28,7 @@ public class PlacesController {
       return placesService.getNearbyPlaces(lat, lon, radiusMeters, type);
     }
   
-    @GetMapping("api/public/places/{placeId}")
+    @GetMapping("/places/{placeId}")
     public Mono<Map<String, Object>> details(@PathVariable String placeId) {
       return placesService.getPlaceDetails(placeId);
     }
