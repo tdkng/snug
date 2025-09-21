@@ -55,9 +55,9 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public ReviewDTO createReview(ReviewDTO reviewDTO) {
         Review review = modelMapper.map(reviewDTO, Review.class);
-        Review reviewDb = reviewRepository.findByAppUser(review.getAppUser());
+        Review reviewDb = reviewRepository.findByUser(review.getUser());
         if (reviewDb != null)
-            throw new APIException("Review by reviewer " + review.getAppUser().getId() + " already exists.");
+            throw new APIException("Review by reviewer " + review.getUser().getId() + " already exists.");
         Review savedReview = reviewRepository.save(review);
         return modelMapper.map(savedReview, ReviewDTO.class);
     }

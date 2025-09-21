@@ -22,10 +22,10 @@ public class JwtUtils {
     private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
     @Value("${spring.app.jwtExpirationMs}")
-    private int jwtExpirationMs;
+    private Long expiration;
 
     @Value("${spring.app.jwtSecret}")
-    private String jwtSecret;
+    private String secret;
 
     public String getJwtFromHeader(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");
@@ -41,7 +41,7 @@ public class JwtUtils {
         return Jwts.builder()
                 .subject(username)
                 .issuedAt(new Date())
-                .expiration(new Date((new Date().getTime() + jwtExpirationMs)))
+                .expiration(new Date((new Date().getTime() + expiration)))
                 .signWith(key())
                 .compact();
     }
@@ -55,7 +55,7 @@ public class JwtUtils {
 
     public Key key() {
         return Keys.hmacShaKeyFor(
-                Decoders.BASE64.decode(jwtSecret)
+                Decoders.BASE64.decode(secret)
         );
     }
 

@@ -24,14 +24,14 @@ public class Profile {
     @OneToOne
     @JoinColumn(name = "app_user")
     @JsonIgnore
-    private AppUser appUser;
+    private User user;
 
     private String description;
 
-    public void setAppUser(AppUser appUser) {
-        this.appUser = appUser;
-        if (appUser.getProfile() != this) {
-            appUser.setProfile(this);
+    public void setUser(User user) {
+        this.user = user;
+        if (user.getProfile() != this) {
+            user.setProfile(this);
         }
     }
 }

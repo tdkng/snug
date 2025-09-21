@@ -2,11 +2,11 @@ package com.tdkng.snug.service;
 
 import java.util.List;
 
-import com.tdkng.snug.model.AppUser;
+import com.tdkng.snug.model.User;
 
 public interface UserService {
-    List<AppUser> getAllUsers();
-    AppUser saveUser(AppUser user);
-    AppUser deleteUser(Long id);
-    AppUser updateUser(AppUser user, Long id);
+    List<User> getAllUsers();
+    User saveUser(User user);
+    User deleteUser(Long id);
+    User updateUser(User user, Long id);
 }

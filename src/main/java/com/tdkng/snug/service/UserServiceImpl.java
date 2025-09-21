@@ -6,33 +6,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tdkng.snug.exceptions.ResourceNotFoundException;
-import com.tdkng.snug.model.AppUser;
-import com.tdkng.snug.repository.AppUserRepository;
+import com.tdkng.snug.model.User;
+import com.tdkng.snug.repository.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
-    private AppUserRepository appUserRepository;
+    private UserRepository userRepository;
     
-    public List<AppUser> getAllUsers() {
-        return appUserRepository.findAll();
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
-    public AppUser saveUser(AppUser user) {
-        AppUser savedUser = appUserRepository.save(user);
+    public User saveUser(User user) {
+        User savedUser = userRepository.save(user);
         return savedUser;
     }
 
-    public AppUser deleteUser(Long id) {
-        AppUser user = appUserRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("AppUser", "id", id));
-        appUserRepository.delete(user);
+    public User deleteUser(Long id) {
+        User user = userRepository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
+        userRepository.delete(user);
         return user;
     }
 
-    public AppUser updateUser(AppUser user, Long id) {
+    public User updateUser(User user, Long id) {
         user.setId(id);
-        AppUser savedUser = appUserRepository.save(user);
+        User savedUser = userRepository.save(user);
         return savedUser;
     }
 }
