@@ -1,4 +1,4 @@
-package com.tdkng.snug.jwt;
+package com.tdkng.snug.security.jwt;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;

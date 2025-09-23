@@ -1,4 +1,4 @@
-package com.tdkng.snug.jwt;
+package com.tdkng.snug.security.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.ServletException;

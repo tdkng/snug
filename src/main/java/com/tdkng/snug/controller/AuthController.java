@@ -1,8 +1,8 @@
 package com.tdkng.snug.controller;
 
-import com.tdkng.snug.jwt.JwtUtils;
-import com.tdkng.snug.jwt.LoginRequest;
-import com.tdkng.snug.jwt.LoginResponse;
+import com.tdkng.snug.security.jwt.JwtUtils;
+import com.tdkng.snug.security.jwt.LoginRequest;
+import com.tdkng.snug.security.jwt.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
