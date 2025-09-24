@@ -27,6 +27,6 @@ public class Place {
     @JoinColumn(name = "owner_id")
     private User user;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "place")
     private List<Review> reviews = new ArrayList<>();
 }

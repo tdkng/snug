@@ -1,4 +1,4 @@
-package com.tdkng.snug.security.jwt;
+package com.tdkng.snug.security.requests;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,6 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoginResponse {
+    private Long id;
     private String username;
     private String token;
     private List<String> roles;

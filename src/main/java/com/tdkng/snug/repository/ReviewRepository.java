@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotNull;
 import com.tdkng.snug.model.User;
 import com.tdkng.snug.model.Review;
 
+import java.util.Optional;
+
 public interface ReviewRepository extends JpaRepository<Review, Long> {
-    Review findByUser(@NotNull User user);
+    Optional<Review> findByUser(@NotNull User user);
 }
