@@ -82,6 +82,14 @@ public class AuthController {
                 .body(response);
     }
 
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout() {
+        ResponseCookie cookie = jwtUtils.generateEmptyJwtCookie();
+        return ResponseEntity.ok()
+                .header(HttpHeaders.SET_COOKIE, cookie.toString())
+                .body(new MessageResponse("Logout successful."));
+    }
+
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody SignupRequest request) {
         if (userRepository.existsByUsername(request.getUsername())) {

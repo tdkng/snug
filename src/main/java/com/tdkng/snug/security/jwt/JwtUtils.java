@@ -13,7 +13,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseCookie;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.WebUtils;
 
@@ -51,6 +50,10 @@ public class JwtUtils {
                 .build();
     }
 
+    public ResponseCookie generateEmptyJwtCookie() {
+        return ResponseCookie.from(jwt, "").path("/api").build();
+    }
+
     public String generateToken(String username) {
         return Jwts.builder()
                 .subject(username)
@@ -75,7 +78,6 @@ public class JwtUtils {
 
     public boolean validateToken(String authToken) {
         try {
-            System.out.println("Validate");
             Jwts.parser()
                     .verifyWith((SecretKey) key())
                     .build()
