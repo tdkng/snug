@@ -12,7 +12,9 @@ import com.tdkng.snug.security.requests.MessageResponse;
 import com.tdkng.snug.security.requests.SignupRequest;
 import com.tdkng.snug.security.service.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -26,7 +28,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -68,13 +70,15 @@ public class AuthController {
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-        String token = jwtUtils.generateToken(userDetails);
+        ResponseCookie cookie = jwtUtils.generateJwtCookie(userDetails);
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .toList();
-        LoginResponse response = new LoginResponse(userDetails.getId(), userDetails.getUsername(), token, roles);
+        LoginResponse response = new LoginResponse(userDetails.getId(), userDetails.getUsername(), roles);
 
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.SET_COOKIE, cookie.toString())
+                .body(response);
     }
 
     @PostMapping("/signup")
