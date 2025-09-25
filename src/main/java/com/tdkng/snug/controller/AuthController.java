@@ -11,6 +11,7 @@ import com.tdkng.snug.security.requests.LoginResponse;
 import com.tdkng.snug.security.requests.MessageResponse;
 import com.tdkng.snug.security.requests.SignupRequest;
 import com.tdkng.snug.security.service.UserDetailsImpl;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -118,6 +119,22 @@ public class AuthController {
         user.setRoles(roles);
         userRepository.save(user);
 
-        return new ResponseEntity<User>(user, HttpStatus.OK);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @GetMapping("/user")
+    public ResponseEntity<?> user(Authentication auth) {
+        UserDetailsImpl userDetails = (UserDetailsImpl) auth.getPrincipal();
+        List<String> roles = userDetails.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .toList();
+        LoginResponse response = new LoginResponse(userDetails.getId(), userDetails.getUsername(), roles);
+
+        return ResponseEntity.ok().body(response);
+    }
+
+    @GetMapping("/username")
+    public String username(Authentication auth) {
+        return auth != null ? auth.getName() : "No auth. Cannot return username.";
     }
 }
