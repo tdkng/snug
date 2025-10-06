@@ -1,13 +1,16 @@
 import { useState } from 'react'
+import { BrowserRouter, Routes, Route, Router } from 'react-router-dom';
+import Home from './components/home/Home.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <p>Find your next study spot here.</p>
-      <input type="text" placeholder="San Francisco, CA"/>
-    </>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   )
 }
 
