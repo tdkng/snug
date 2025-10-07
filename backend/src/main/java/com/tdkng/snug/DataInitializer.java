@@ -25,17 +25,25 @@ public class DataInitializer {
     @Bean
 	public CommandLineRunner initialize() {
 		return (args -> {
-			User user1 = new User("username1", "abc@def.com", "user2sux");
-            userRepository.save(user1);
+            User user1 = userRepository.findByUsername("username1")
+                    .orElseGet(() -> userRepository.save(new User(
+                            "username1",
+                            "abc@def.com",
+                            "user2sux"
+                    )));
 
-            Profile profile1 = new Profile();
-            profile1.setUser(user1);
+            if (user1.getProfile() == null) {
+                Profile profile1 = new Profile();
+                profile1.setUser(user1);
+            }
 
-			Review review1 = new Review();
-			review1.setReviewRating(4);
-			review1.setReviewComments("place is very pretty!");
-			review1.setUser(user1);
-            reviewRepository.save(review1);
+            if (reviewRepository.findByUser(user1).isEmpty()) {
+                Review review1 = new Review();
+                review1.setReviewRating(4);
+                review1.setReviewComments("place is very pretty!");
+                review1.setUser(user1);
+                reviewRepository.save(review1);
+            }
 		});
 	}
 }
