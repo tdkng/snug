@@ -24,13 +24,13 @@ const NavBar = () => {
                             Search
                         </Link>
                     </li>
-                    <li className="inline-block px-4">
+                    {/* <li className="inline-block px-4">
                         <Link className={`${
                             path === "/about" ? "text-white font-bold" : "text-white"
                         }`} to="/about">
                             About
                         </Link>
-                    </li>
+                    </li> */}
                     <li className="inline-block px-4">
                         <Link className={`${
                             path === "/contact" ? "text-white font-bold" : "text-white"
@@ -38,6 +38,7 @@ const NavBar = () => {
                             Contact
                         </Link>
                     </li>
+                    
                 </ul>
             </div>
         </div>
