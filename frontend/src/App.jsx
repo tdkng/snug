@@ -5,6 +5,7 @@ import Contact from './components/contact/Contact.jsx';
 import Home from './components/home/Home.jsx'
 import Query from './components/query/Query.jsx';
 import NavBar from './components/shared/NavBar.jsx';
+import Login from './components/auth/Login.jsx';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/query" element={<Query />} />
           {/* <Route path="/about" element={<About />} /> */}
           <Route path="/contact" element={<Contact />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
       </BrowserRouter>
     </div>

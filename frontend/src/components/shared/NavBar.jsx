@@ -38,7 +38,13 @@ const NavBar = () => {
                             Contact
                         </Link>
                     </li>
-                    
+                    <li className="inline-block px-4">
+                        <Link className={`${
+                            path === "/login" ? "text-white font-bold" : "text-white"
+                        }`} to="/login">
+                            Login
+                        </Link>
+                    </li>
                 </ul>
             </div>
         </div>
