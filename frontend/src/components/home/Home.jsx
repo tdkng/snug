@@ -11,7 +11,7 @@ const Home = () => {
                     src={home_bg}
                 />
             </div>
-            <div className="flex justify-center items-center w-full h-[720px]">
+            <div className="flex justify-center items-center w-full h-[540px]">
                 <ul className="space-y-4">
                     <li><h1 className="text-white text-center text-5xl font-bold">
                         Find your next study spot here.
