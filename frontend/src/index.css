@@ -2,6 +2,7 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+@import "leaflet/dist/leaflet.css";
 
 @theme {
     --color-light-brown: #6e4a44;

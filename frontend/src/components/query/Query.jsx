@@ -1,4 +1,5 @@
 import ResultsPanel from './ResultsPanel.jsx';
+import MapComponent from './MapComponent.jsx';
 
 const Query = () => {
     document.body.style.backgroundColor = 'var(--color-brown)';
@@ -7,12 +8,9 @@ const Query = () => {
             <h1 className="py-6 flex justify-center align-middle text-white text-2xl font-bold">
                 Showing results for ...
             </h1>
-            <div className="flex items-center">
-                <div><ResultsPanel/></div>
-                <img
-                    className="h-full w-full object-cover object-center"
-                    src="https://placehold.co/600x400"
-                />
+            <div className="flex">
+                <div className="flex-1 w-[40%]"><ResultsPanel/></div>
+                <div className="flex-1"><MapComponent/></div>
             </div>
         </div>
     )

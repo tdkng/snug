@@ -7,7 +7,7 @@ import { FreeMode, Mousewheel, Navigation, Pagination, Scrollbar } from 'swiper/
 
 const ResultsPanel = () => {
     return (
-        <div className='py-4 px-4 rounded-md relative mx-auto h-[calc(100vh-160px)] w-150'>
+        <div className='px-4 rounded-md relative mx-auto h-[calc(100vh-160px)] w-full'>
             <Swiper className='bg-brown h-full'
                 direction="vertical"
                 freeMode={true}
