@@ -23,7 +23,6 @@ public class PlacesServiceImpl implements PlacesService {
         Map<String, Object> body;
         
         if (type != null && (type.equals("cafe") || type.equals("study_spot") || type.equals("cafe_study"))) {
-            // Use text search for cafes and study spots
             String textQuery;
             if (type.equals("cafe")) {
                 textQuery = "cafe coffee";
