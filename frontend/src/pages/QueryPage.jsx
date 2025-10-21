@@ -1,5 +1,5 @@
-import ResultsPanel from './ResultsPanel.jsx';
-import MapComponent from './MapComponent.jsx';
+import ResultsPanel from '../components/query/ResultsPanel.jsx';
+import MapComponent from '../components/query/MapComponent.jsx';
 
 const Query = () => {
     document.body.style.backgroundColor = 'var(--color-brown)';

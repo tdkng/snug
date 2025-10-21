@@ -1,5 +1,5 @@
 import { FaSearch } from "react-icons/fa";
-import home_bg from '../../assets/cafe_bg.jpg';
+import home_bg from '../assets/cafe_bg.jpg';
 
 const Home = () => {
     document.body.style.backgroundColor = 'var(--color-brown)';

@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import About from './components/about/About.jsx'
-import Contact from './components/contact/Contact.jsx';
-import Home from './components/home/Home.jsx'
-import Query from './components/query/Query.jsx';
 import NavBar from './components/shared/NavBar.jsx';
-import Login from './components/auth/Login.jsx';
+import About from './pages/AboutPage.jsx';
+import Contact from './pages/ContactPage.jsx';
+import Home from './pages/HomePage.jsx';
+import Query from './pages/QueryPage.jsx';
+import Login from './pages/LoginPage.jsx';
 import LandingPage from './pages/LandingPage.jsx';
 
 function App() {
