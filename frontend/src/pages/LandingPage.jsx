@@ -2,6 +2,7 @@ import home_bg from '../assets/cafe_bg.jpg';
 import { useNavigate } from 'react-router-dom';
 
 export default function LandingPage() {
+  document.body.style.backgroundColor = 'var(--color-dark-brown)';
   const navigate = useNavigate();
   return (
     <div className="relative min-h-screen bg-black overflow-hidden">

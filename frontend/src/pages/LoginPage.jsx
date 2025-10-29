@@ -4,11 +4,19 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
-import { Card, CardContent } from '../components/ui/card';
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 
 const LOGIN_ENDPOINT = 'http://localhost:8080/api/auth/login';
 
 const LoginForm = () => {
+  document.body.style.backgroundColor = 'var(--color-toffee)';
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -117,16 +125,31 @@ const LoginForm = () => {
         type="submit"
         disabled={isLoading}
       >
-        {isLoading ? 'Signing in...' : 'Sign in to Snug'}
+        {isLoading ? 'Logging in...' : 'Log in to Snug'}
       </Button>
     </form>
   );
 };
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/signup');
+  };
+
   return (
-    <div className="flex justify-center items-center h-screen bg-light-brown">
+    <div className="flex justify-center items-center h-screen bg-toffee">
       <Card className="z-1 w-full border-none shadow-md sm:max-w-lg">
+        <CardHeader>
+          <CardTitle>Login to your account</CardTitle>
+          <CardDescription>
+            Enter your email below to login to your account
+          </CardDescription>
+          <CardAction>
+            <Button variant="link" onClick={handleClick}>Sign Up</Button>
+          </CardAction>
+        </CardHeader>
         <CardContent>
           <LoginForm />
         </CardContent>
