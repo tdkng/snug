@@ -11,12 +11,11 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from '@/components/ui/card';
 
 const LOGIN_ENDPOINT = 'http://localhost:8080/api/auth/login';
 
 const LoginForm = () => {
-  document.body.style.backgroundColor = 'var(--color-toffee)';
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -33,7 +32,6 @@ const LoginForm = () => {
     });
     if (loginError) setLoginError('');
   };
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,7 +54,6 @@ const LoginForm = () => {
       }
       const data = await response.json();
       navigate('/home');
-      
     } catch (error) {
       console.error('Login error:', error);
       setLoginError('Network error. Please check your connection.');
@@ -132,8 +129,10 @@ const LoginForm = () => {
 };
 
 const Login = () => {
-  const navigate = useNavigate();
+  document.body.style.backgroundColor = 'var(--color-toffee)';
 
+  const navigate = useNavigate();
+  
   const handleClick = () => {
     navigate('/signup');
   };
@@ -147,7 +146,9 @@ const Login = () => {
             Enter your email below to login to your account
           </CardDescription>
           <CardAction>
-            <Button variant="link" onClick={handleClick}>Sign Up</Button>
+            <Button variant="link" onClick={handleClick}>
+              Sign Up
+            </Button>
           </CardAction>
         </CardHeader>
         <CardContent>
