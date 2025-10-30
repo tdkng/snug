@@ -18,15 +18,19 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-2xl fade-in">
             <h1 className="font-serif text-white text-4xl lg:text-6xl font-normal tracking-tight mb-8">
-              Find Peace in the Edge of <em>Silence</em>
+              Find Your Perfect Study Spot
             </h1>
 
             <p className="font-sans text-gray-200 text-lg lg:text-xl font-light leading-relaxed mb-12 max-w-xl">
-              Discover tranquility through mindful meditation and embrace the
-              profound stillness that exists between thoughts and breath.
+              Discover local cafes and cozy spots to study, work, or relax. Snug
+              helps you find the perfect environment to boost your productivity and
+              creativity.
             </p>
 
-            <button onClick={() => navigate('/login')} className="bg-white text-gray-900 font-sans font-medium px-6 py-3 rounded-lg text-base hover:bg-gray-100 hover:scale-105 hover:shadow-lg transition-all duration-300">
+            <button
+              onClick={() => navigate('/login')}
+              className="bg-white text-gray-900 font-sans font-medium px-6 py-3 rounded-lg text-base hover:bg-gray-100 hover:scale-105 hover:shadow-lg transition-all duration-300"
+            >
               Begin Your Journey
             </button>
           </div>

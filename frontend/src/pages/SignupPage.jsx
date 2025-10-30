@@ -146,8 +146,6 @@ const SignupForm = () => {
 };
 
 const Signup = () => {
-  document.body.style.backgroundColor = 'var(--color-dark-brown)';
-
   const navigate = useNavigate();
 
   const handleClick = () => {

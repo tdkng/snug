@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import NavBar from './components/shared/NavBar.jsx';
 import About from './pages/AboutPage.jsx';
 import Contact from './pages/ContactPage.jsx';
 import Home from './pages/HomePage.jsx';

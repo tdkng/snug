@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 const NavBar = () => {
     const path = useLocation().pathname;
     return (
-        <div className="h-[80px] z-50 m-4 top-4 flex items-center sticky bg-white/30 backdrop-blur-sm shadow-md rounded-2xl">
+        <div className="h-[80px] z-50 top-4 flex items-center sticky bg-white/30 backdrop-blur-sm shadow-md rounded-2xl">
             <div className="lg:px-16 sm:px-8 px-4 w-full flex justify-between text-white">
                 <Link to="/" className="flex items-center text-2xl font-bold">
                     <p>snug_app</p>
@@ -12,8 +12,8 @@ const NavBar = () => {
                 <ul>
                     <li className="inline-block px-4">
                         <Link className={`${
-                            path === "/" ? "font-bold" : ""
-                        }`} to="/">
+                            path === "/home" ? "font-bold" : ""
+                        }`} to="/home">
                             Home
                         </Link>
                     </li>
@@ -40,9 +40,9 @@ const NavBar = () => {
                     </li>
                     <li className="inline-block px-4">
                         <Link className={`${
-                            path === "/login" ? "font-bold" : ""
-                        }`} to="/login">
-                            Login
+                            path === "/home" ? "font-bold" : ""
+                        }`} to="/home">
+                            Name
                         </Link>
                     </li>
                 </ul>

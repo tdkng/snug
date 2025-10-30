@@ -1,7 +1,11 @@
+import NavBar from '../components/shared/NavBar';
+
 const Contact = () => {
-  document.body.style.backgroundColor = "var(--color-brown)";
   return (
-    <div>
+    <div className="bg-brown">
+      <div className="p-4">
+        <NavBar />
+      </div>
       <div className="py-24 flex justify-center align-middle text-dark-brown">
         <div className="bg-toffee drop-shadow-lg rounded-lg p-8 w-full max-w-xl">
           <h1 className="text-2xl pb-4 font-bold text-center">Contact Us</h1>

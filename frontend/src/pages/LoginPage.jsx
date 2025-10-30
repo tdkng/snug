@@ -129,8 +129,6 @@ const LoginForm = () => {
 };
 
 const Login = () => {
-  document.body.style.backgroundColor = 'var(--color-toffee)';
-
   const navigate = useNavigate();
   
   const handleClick = () => {
