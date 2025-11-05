@@ -40,9 +40,9 @@ const NavBar = () => {
                     </li>
                     <li className="inline-block px-4">
                         <Link className={`${
-                            path === "/home" ? "font-bold" : ""
-                        }`} to="/home">
-                            Name
+                            path === "/profile" ? "font-bold" : ""
+                        }`} to="/profile">
+                            Profile
                         </Link>
                     </li>
                 </ul>
