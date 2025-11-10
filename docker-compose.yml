@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    container_name: snug-backend
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:80"  # map nginx port 80 -> local 5173
+    container_name: snug-frontend
+
