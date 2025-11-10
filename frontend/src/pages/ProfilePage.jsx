@@ -1,4 +1,5 @@
 import NavBar from '../components/shared/NavBar';
+import sample_pfp from '../assets/sample_pfp.jpg';
 
 const ProfilePage = () => {
   return (
@@ -43,20 +44,25 @@ const Profile = () => {
       {/* Profile Header */}
       <div className="max-w-4xl mx-auto">
         <div className="bg-white rounded-2xl shadow-sm p-8 mb-8 border border-gray-100">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-3xl font-semibold text-gray-800">
-                {user.name}
-              </h1>
-              <p className="text-gray-500 text-sm">Joined {user.joined}</p>
+          <div className="flex items-center">
+            <div className="w-24 h-24 overflow-hidden rounded-full border-4 border-dark-brown">
+              <img src={sample_pfp} alt="Profile" />
             </div>
-            <div className="text-right">
-              <p className="text-gray-700">
-                <span className="font-semibold text-lg">
-                  {user.totalReviews}
-                </span>{' '}
-                reviews written
-              </p>
+            <div className="flex items-center w-full ml-4 justify-between">
+              <div>
+                <h1 className="text-3xl font-semibold text-gray-800">
+                  {user.name}
+                </h1>
+                <p className="text-gray-500 text-sm">Joined {user.joined}</p>
+              </div>
+              <div className="text-right">
+                <p className="text-gray-700">
+                  <span className="font-semibold text-lg">
+                    {user.totalReviews}
+                  </span>{' '}
+                  reviews written
+                </p>
+              </div>
             </div>
           </div>
         </div>
