@@ -25,3 +25,5 @@ backend/.idea
 *.njsproj
 *.sln
 *.sw?
+
+backend/TESTING_SETUP.md
