@@ -36,6 +36,11 @@ Developer docs
 --------------
 
 For build, test, and development instructions, see `DEVELOPMENT.md`.
+<!-- 
+Developer helper scripts
+------------------------
+
+If you run CI locally with `act`, a convenience script is available at `scripts/run-act.sh` that runs `act` with the recommended flags (maps `ubuntu-latest` to a fuller image, forces amd64 on Apple Silicon, mounts the Docker socket, and passes a test Google API key by default). -->
 
 Support
 -------

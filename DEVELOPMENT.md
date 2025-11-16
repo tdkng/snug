@@ -112,17 +112,7 @@ npm test
 
 ## Local CI with `act` (notes & tips)
 
-`act` is useful for running GitHub Actions locally but the default images are minimal and differ from GitHub-hosted runners. Common gotchas:
-
-- `mvn: command not found` — lightweight node images used by `act` don't include Maven. Two options:
-  1. Map `ubuntu-latest` to a fuller image and force container architecture on Apple Silicon:
-
-     ```bash
-     act -P ubuntu-latest=ghcr.io/catthehacker/ubuntu:full-20.04 --container-architecture linux/amd64 \
-       -s GOOGLE_PLACES_API_KEY=test-dummy-key --privileged -v /var/run/docker.sock:/var/run/docker.sock
-     ```
-
-  2. Let the workflow install Maven when missing (the backend CI already has an `Ensure Maven is installed` step to help with local runs under `act`).
+Use `act` for running GitHub Actions locally.
 
 - `docker build` steps need Docker socket access. Use `--privileged -v /var/run/docker.sock:/var/run/docker.sock` with `act`.
 
@@ -131,6 +121,23 @@ npm test
 ```bash
 act -j "Backend CI (Spring Boot + Maven)/build"
 ```
+
+<!-- Helper script
+-------------
+
+To avoid memorizing the long `act` command, there's a helper script at `scripts/run-act.sh` that runs `act` with the recommended flags (maps `ubuntu-latest` to a fuller image, forces amd64 on Apple Silicon, mounts the Docker socket, and sets a dummy Google API key by default).
+
+Usage:
+
+```bash
+# run with default test key
+./scripts/run-act.sh
+
+# provide a real Google API key for a closer CI run
+./scripts/run-act.sh my-real-key
+```
+
+The script checks that `act` is installed and then runs it from the repo root. You may still need to run the script with sufficient privileges to access the Docker socket on some systems. -->
 
 ## Troubleshooting
 

@@ -52,7 +52,7 @@ const LoginForm = () => {
         setLoginError(errorData.message || 'Login failed. Please try again.');
         return;
       }
-      const data = await response.json();
+      // const data = await response.json();
       navigate('/home');
     } catch (error) {
       console.error('Login error:', error);

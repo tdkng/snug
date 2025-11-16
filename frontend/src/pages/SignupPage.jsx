@@ -53,7 +53,7 @@ const SignupForm = () => {
         setSignupError(errorData.message || 'Signup failed. Please try again.');
         return;
       }
-      const data = await response.json();
+      // const data = await response.json();
       navigate('/home');
     } catch (error) {
       console.error('Signup error:', error);
