@@ -1,9 +1,43 @@
-# snug
+# Snug
 
-Snug is an interactive full-stack web application for finding nearby cafes and study spots. 
+Snug is an interactive web app for finding nearby cafes and study spots.
 
-frontend:
-html, css, js, react + vite, tailwind
+Built with:
+- Frontend: React, Vite, Tailwind
+- Backend: Spring Boot, PostgreSQL, Google Places API
 
-backend:
-java, spring boot, spring security, postgresql, aws rds/ec2, google places api
+Quick start (consumers)
+------------------------
+
+If you only want to run Snug (not develop it), use Docker:
+
+```bash
+docker pull tdkng/snug-backend:latest
+docker run --rm -p 8080:8080 tdkng/snug-backend:latest
+```
+
+If an image isn't published, build locally (no Maven required):
+
+```bash
+docker build -t tdkng/snug-backend:latest ./backend
+docker run --rm -p 8080:8080 tdkng/snug-backend:latest
+```
+
+Notes:
+- The runtime image contains only the JRE and compiled app; no Maven or JDK needed.
+- The backend listens on port 8080 by default.
+
+Configuration
+--------------
+
+The backend requires environment variables, including a Google Places API key for production. See `backend/src/main/resources/application.properties` for details.
+
+Developer docs
+--------------
+
+For build, test, and development instructions, see `DEVELOPMENT.md`.
+
+Support
+-------
+
+Open an issue or contact the maintainer for help.

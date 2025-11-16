@@ -1,0 +1,36 @@
+name: Frontend CI (React + Vite)
+
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main, dev ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: 'frontend/package-lock.json'
+
+      - name: Install dependencies
+        working-directory: ./frontend
+        run: npm install
+
+      - name: Build and test with Vite
+        working-directory: ./frontend
+        run: |
+          npm run build
+          npm run lint
+
+      - name: Build Docker image
+        run: |
+          docker build -t snug-frontend:latest ./frontend

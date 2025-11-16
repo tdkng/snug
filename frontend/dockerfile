@@ -1,4 +1,4 @@
-# Stage 1: Build
+# build
 FROM node:20-alpine AS build
 WORKDIR /app
 COPY package*.json ./
@@ -6,10 +6,9 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-# Stage 2: Serve
+# serve
 FROM nginx:alpine
-# Copy the Vite build output (default is /dist)
+# copy vite build output (default is /dist)
 COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 5173
 CMD ["nginx", "-g", "daemon off;"]
-

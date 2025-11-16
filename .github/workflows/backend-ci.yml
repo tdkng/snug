@@ -21,6 +21,15 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
+      - name: Ensure Maven is installed
+        if: runner.os == 'Linux'
+        run: |
+          if ! command -v mvn >/dev/null; then
+            apt-get update && apt-get install -y maven
+          else
+            echo "mvn found: $(mvn -v | head -n1)"
+          fi
+
       - name: Build and test with Maven
         working-directory: ./backend
         env:
