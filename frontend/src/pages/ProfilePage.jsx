@@ -1,13 +1,15 @@
-import NavBar from '../components/shared/NavBar';
 import sample_pfp from '../assets/sample_pfp.jpg';
+import home_bg from '../assets/cafe_bg.jpg';
+import { SidebarProvider } from '@/components/ui/sidebar';
+import { SideBar } from '@/components/shared/SideBar';
 
 const ProfilePage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="p-4">
-        <NavBar />
-      </div>
-      <Profile />
+      <SidebarProvider>
+        <SideBar />
+        <Profile />
+      </SidebarProvider>
     </div>
   );
 };
@@ -40,15 +42,22 @@ const user = {
 
 const Profile = () => {
   return (
-    <div>
-      {/* Profile Header */}
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-sm p-8 mb-8 border border-gray-100">
-          <div className="flex items-center">
-            <div className="w-24 h-24 overflow-hidden rounded-full border-4 border-dark-brown">
-              <img src={sample_pfp} alt="Profile" />
-            </div>
-            <div className="flex items-center w-full ml-4 justify-between">
+    <div className="py-24 max-w-4xl w-[80%] mx-auto">
+      <div className="rounded-2xl">
+        {/* Profile Header */}
+        <div className="bg-brown bt-8 overflow-hidden rounded-t-2xl">
+          <img
+            className="h-[calc(30vh)] w-full object-cover object-center opacity-45"
+            src={home_bg}
+            alt="Background"
+          />
+        </div>
+        <div className="relative bg-white rounded-b-2xl shadow-sm p-8 mb-8 border border-gray-100">
+          <div className="absolute -top-18 w-36 h-36 overflow-clip rounded-full aspect-square object-cover">
+            <img src={sample_pfp} alt="Profile" />
+          </div>
+          <div className="mt-16 flex items-center">
+            <div className="flex items-center ml-4 w-full justify-between">
               <div>
                 <h1 className="text-3xl font-semibold text-gray-800">
                   {user.name}
