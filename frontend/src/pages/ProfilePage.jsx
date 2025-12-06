@@ -1,3 +1,4 @@
+import NavBar from '@/components/shared/NavBar';
 import sample_pfp from '../assets/sample_pfp.jpg';
 import home_bg from '../assets/cafe_bg.jpg';
 import { SidebarProvider } from '@/components/ui/sidebar';
@@ -6,6 +7,7 @@ import { SideBar } from '@/components/shared/SideBar';
 const ProfilePage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
+      <NavBar />
       <SidebarProvider>
         <SideBar />
         <Profile />
