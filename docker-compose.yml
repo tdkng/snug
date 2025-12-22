@@ -1,12 +1,36 @@
-version: "3.9"
 services:
+  postgres:
+    image: postgres:16
+    container_name: snug-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    # ports:
+    #   - "5432:5432"   # optional (for local psql access)
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U snug_app -d snug"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      
   backend:
     build: ./backend
     ports:
       - "8080:8080"
     container_name: snug-backend
+    env_file:
+      - backend/.env
+    depends_on:
+      postgres:
+        condition: service_healthy
     environment:
-      - SPRING_PROFILES_ACTIVE=dev
+      SPRING_PROFILES_ACTIVE: dev
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
 
   frontend:
     build: ./frontend
@@ -14,3 +38,5 @@ services:
       - "5173:80"  # map nginx port 80 -> local 5173
     container_name: snug-frontend
 
+volumes:
+  pgdata:
