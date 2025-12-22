@@ -12,20 +12,9 @@ Quick start (consumers)
 If you only want to run Snug (not develop it), use Docker:
 
 ```bash
-docker pull tdkng/snug-backend:latest
+docker pull timothydknguyen/snug-backend:latest
 docker run --rm -p 8080:8080 tdkng/snug-backend:latest
 ```
-
-If an image isn't published, build locally (no Maven required):
-
-```bash
-docker build -t tdkng/snug-backend:latest ./backend
-docker run --rm -p 8080:8080 tdkng/snug-backend:latest
-```
-
-Notes:
-- The runtime image contains only the JRE and compiled app; no Maven or JDK needed.
-- The backend listens on port 8080 by default.
 
 Configuration
 --------------
