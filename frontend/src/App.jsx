@@ -6,7 +6,7 @@ import Query from './pages/QueryPage.jsx';
 import Login from './pages/LoginPage.jsx';
 import Signup from './pages/SignupPage.jsx';
 import LandingPage from './pages/LandingPage.jsx';
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
