@@ -1,11 +1,9 @@
 services:
   postgres:
     image: postgres:18
+    env_file:
+      - ./backend/.env
     container_name: snug-postgres
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     # ports:
     #   - "5432:5432"   # optional (for local psql access)
     volumes:
@@ -23,15 +21,10 @@ services:
       - "8080:8080"
     container_name: snug-backend
     env_file:
-      - backend/.env
+      - ./backend/.env
     # depends_on:
     #   postgres:
     #     condition: service_healthy
-    environment:
-      SPRING_PROFILES_ACTIVE: dev
-      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
-      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
-      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
     platform: linux/amd64
 
   frontend:
