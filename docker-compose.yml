@@ -10,11 +10,12 @@ services:
     #   - "5432:5432"   # optional (for local psql access)
     volumes:
       - pgdata:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U snug_app -d snug"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
+    # healthcheck:
+    #   test: ["CMD-SHELL", "pg_isready -U snug_app -d snug"]
+    #   interval: 5s
+    #   timeout: 5s
+    #   retries: 5
+    platform: linux/amd64
       
   backend:
     build: ./backend
@@ -23,14 +24,15 @@ services:
     container_name: snug-backend
     env_file:
       - backend/.env
-    depends_on:
-      postgres:
-        condition: service_healthy
+    # depends_on:
+    #   postgres:
+    #     condition: service_healthy
     environment:
       SPRING_PROFILES_ACTIVE: dev
       SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
       SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
       SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+    platform: linux/amd64
 
   frontend:
     build: ./frontend
